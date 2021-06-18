@@ -1,0 +1,130 @@
+@media screen and (min-width: 1000px) {
+
+	.wrapper {
+		margin: 20px 10% 20px 10%;
+	}
+}
+
+@media screen and (max-width: 400px) {
+
+	.wrapper {
+		margin: 5px 10px 5px 10px;
+	}
+
+
+	.team-list {
+		flex-direction: column;
+		align-item: center;
+
+	}
+	.team-card {
+		align-self: center;
+	}
+
+	.four-container {
+		margin: 0 5px 0px 5px;
+	}
+	.player-card {
+		margin-left: 30px;
+	}
+	.btn-delete {
+		
+		min-height: 4px;
+	}
+}
+
+@media screen and (max-width: 300px) {
+	.info-btn {
+		align-self: center;
+		margin-right: 50px;
+	}
+
+	.wrapper {
+		margin: 0px;
+	}
+	
+
+	.add-input {
+		width: 90%;
+	}
+
+	h1 {
+		font-size: 30px;
+		b {
+			font-size: 60px;
+		}
+	}
+	.name-input-container {
+	
+		margin: 2%;
+		input {
+
+			width: 100%;
+		}
+	}
+	.submit-btn {
+		align-self: center;
+		
+
+	}	
+
+	.error-message {
+		font-size: 14px;
+	}
+	.team-input1 { 
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}	
+
+}
+
+@media screen and (max-width: 700px) {
+	.add-input {
+		width: 80%;
+	} 
+	.header-box {
+		width: 80%;
+
+	}
+	.error-message {
+		position: relative;
+	}
+	.team-list {
+		flex-direction: column;
+		align-items: center;
+
+	}
+	.team-card {
+		order: 3;
+	}
+	.team1 {
+		order: 1;
+
+	}
+	.team2 {
+		order: 2;
+	}
+
+	.submit-btn-container {
+		display: flex;
+		justify-content: center;
+	}
+	.submit-btn {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.submit-btn:hover {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.info-btn {
+		bottom: 5px;
+		right: 5px;
+	}
+}
+

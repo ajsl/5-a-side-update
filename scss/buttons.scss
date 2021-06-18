@@ -1,0 +1,115 @@
+.sort-btn {
+	display: flex;
+	justify-content: center;
+	margin: 2% 5px;
+	color: black;
+}
+
+.btn {
+	margin: 20px;
+	background: $button-color;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.btn:hover {
+	border: 2px solid black;
+	padding: 4px;
+	background: $button-color-hover;
+	transition-duration:: 0.2s;
+}
+
+button {
+	color: white;
+}
+
+.submit-btn {
+	color: white;
+}
+
+.btn-delete {
+	height: 2px;
+	width: 2px;
+	color: black;
+	text-align: center;
+
+	.btn-delete-text {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		p {
+			position: relative;
+			bottom: 2px;
+		}
+	}
+
+}
+.btn-skill {
+	display: flex;
+	justify-content: center;
+}
+.sort {
+	padding: 10px 50px;
+	font-size: 18px;
+}
+
+.sort:hover {
+	border: 2px solid black;
+	padding: 9px 49px;
+	background: $button-color-hover;
+	transition-duration:: 0.2s;
+}
+.sort-btn {
+	height: 50px;
+}
+
+.team-edit-container {
+	align-self: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.edit-btn {
+	margin: 0px 0px 0px 5px;
+}
+
+.team-btn {
+	margin: 0px;
+}
+.close-btn {
+	align-self: flex-end;
+	color: black;
+}
+.info-btn {
+	color: black;
+	position: relative;
+	left: 15%;
+	top: 35%;
+	
+}
+.info-btn-container {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.info-btn {
+	margin-right: 22%;
+	margin-bottom: 2%;
+	heigth: 15px;
+	width: 15px;
+	display: flex;
+	position: relative;
+	border-radius: 15px;
+	justify-content: center;
+	background-color: hsla(0, 0, 0, 0)
+}
+.info-img {
+	height: 15px;
+	width: 15px;
+}
+
+
+
+	

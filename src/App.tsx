@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.scss";
+import Header from "./Components/Header";
+import List from "./Components/List";
+import Skill from "./Components/Skill";
+import FourOhFour from "./Components/FourOhFour";
+import Footer from "./Components/Footer";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <section className="wrapper">
+        <Header />
+
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <List />
+            </Route>
+
+            <Route exact path="/skill" component={Skill} />
+
+            <Route path="*" component={FourOhFour} />
+          </Switch>
+        </Router>
+
+        <Footer />
+      </section>
+    </React.Fragment>
   );
 }
 

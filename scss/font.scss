@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Cairo:400,700');
+
+body {
+	font-family: 'Cairo', sans-serif; 
+	color: black;
+}
+
+p {
+	font-size: 12px;
+}
+
+h4 {
+	font-size: 18px;
+}
+
+h1 {
+	font-size: 40px;
+
+	b {
+		font-size: 80px;
+		background: linear-gradient(#1252C8, #1354CD);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+}
+h3 {
+	font-size: 26px;
+}
+
+btn {
+	color: #fff;
+}
+
+.error-message {
+	font-size: 20px;
+	position: absolute;
+	color: red;
+}
+
+h5 {
+	padding-bottom: 5px;
+}
