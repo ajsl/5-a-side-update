@@ -1,99 +1,74 @@
-import React, { Component } from "react";
+import React, { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
 import Player from "./Player";
 import { Link } from "react-router-dom";
 import { shuffle } from "../Data/dataFunctions";
+import { useSelector } from "react-redux";
+import { IPlayer, IPlayerArray } from "../Models/player";
 
+const Skill: React.FC = () => {
+	
+	const props: any = useSelector(state => {
+	
+		return state;
+	  })
 
-
-
-
-class Skill extends Component {
-	constructor(props){
-		super(props);
-
-		 
-		this.state = {
-			//initial values for the team input fields.
-			value1: "",
-			value2: "", 
-			//boolean flags for the display of team input fields
-			displayTeam1: true,
-			displayTeam2: true,
-			displaySkill: false,
-			//store the shuffled array of names in local state, 
-			//needs to be shuffeld incase all players have the same skill level
-			names: shuffle(this.props.names.sort((a, b) => parseFloat(a.skill) - parseFloat(b.skill))),
-			
-		}
-		this.handleChange1 = this.handleChange1.bind(this);
-		this.handleChange2 = this.handleChange2.bind(this);
-		this.handleSubmit1 = this.handleSubmit1.bind(this);
-		this.handleSubmit2 = this.handleSubmit2.bind(this);
-		this.clicked2 = this.clicked2.bind(this);
-		this.clicked1 = this.clicked1.bind(this);
-		this.skillClicked = this.skillClicked.bind(this);
-	}
+	const [value1, setValue1] = useState("");
+	const [value2, setValue2] = useState("");
+	const [displayTeam1, setDisplayTeam1] = useState(true);
+	const [displayTeam2, setDisplayTeam2] = useState(true);
+	const [displaySkill, setDisplaySkill] = useState(false);
+	const namesArray = props.names.slice();
+	const names: IPlayer[] = namesArray.sort((a: IPlayer, b: IPlayer) => a.skill - b.skill);
+	  
+		// this.handleChange1 = this.handleChange1.bind(this);
+		// this.handleChange2 = this.handleChange2.bind(this);
+		// this.handleSubmit1 = this.handleSubmit1.bind(this);
+		// this.handleSubmit2 = this.handleSubmit2.bind(this);
+		// this.clicked2 = this.clicked2.bind(this);
+		// this.clicked1 = this.clicked1.bind(this);
+		// this.skillClicked = this.skillClicked.bind(this);
 
 	// team name onchange handlers 
 
-	handleChange1(e) {
-	 	this.setState(({
-	 		value1: e.target.value,
-	 	}))
-	 	
+	const handleChange1 = (e: ChangeEvent<HTMLInputElement>) => {
+		setValue1(e.target.value);
 	}
-	handleChange2(e) {
-	 	this.setState(({
-	 		value2: e.target.value,
-	 	}))
+	const handleChange2 = (e: ChangeEvent<HTMLInputElement>) => {
+		setValue2(e.target.value);
 	 	
 	}
 	//team name onSubmit handlers 	
-	handleSubmit1(e) {
+	const handleSubmit1 = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		this.setState(({
-			displayTeam1: false,
-		}))
+		setDisplayTeam1(false);
 
 	}
 
-	handleSubmit2(e) {
+	const handleSubmit2 = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		this.setState(({
-			displayTeam2: false,
-		}))
+		setDisplayTeam2(false);
+
 	}
 
 	//team name edit button event handlers. 
-	clicked1(e) {
+	const clicked1 = (e: MouseEvent) =>  {
 		e.preventDefault();
-		this.setState(({
-			displayTeam1: true,
-		}))
-
+		setDisplayTeam1(true);
 	}
-	clicked2(e) {
+	const clicked2 = (e: MouseEvent) =>  {
 		e.preventDefault();
-		this.setState(({
-			displayTeam2: true,
-		}))
-
+		setDisplayTeam2(true);
 	}
 
-	skillClicked() {
-		this.setState(({
-			displaySkill: this.state.displaySkill ? false : true
-		}))
+	const skillClicked = () => {
+		setDisplaySkill(!displaySkill)
 	}
 	
-	render() {
-	
-		const { displayTeam1, displayTeam2, names, value1, value2, displaySkill } = this.state;
-
+		// const { displayTeam1, displayTeam2, names, value1, value2, displaySkill } = state;
 		const names1 = names.filter(name => name.id % 2 === 0)
 		const names2 = names.filter(name => name.id % 2 !== 0)
 
-		let reserve = {};
+		let reserve: IPlayer | undefined;
 		
 		if (names1.length > names2.length ) {
 			reserve = names1.pop();
@@ -108,7 +83,7 @@ class Skill extends Component {
 				{ names.length > 1 
 				? 
 					<div className="skill-btn-container">
-						<input type="checkbox" onClick={this.skillClicked}/>
+						<input type="checkbox" onClick={skillClicked}/>
 						<label>Show player skill</label>
 					</div>
 				:
@@ -132,8 +107,8 @@ class Skill extends Component {
 							? 
 							names.length 
 							? 
-								<form onSubmit={ this.handleSubmit1 } className="team-input1">
-									<input className="name-input team-input"  placeholder="Enter Team Name" type="text" value={ value1 } id="team1" onChange={this.handleChange1} />
+								<form onSubmit={(e) => handleSubmit1(e) } className="team-input1">
+									<input className="name-input team-input"  placeholder="Enter Team Name" type="text" value={ value1 } id="team1" onChange={(e) => handleChange1(e)} />
 									<input className="submit-btn btn team-btn" type="submit"/>
 								</form>
 							:
@@ -143,7 +118,7 @@ class Skill extends Component {
 
 						<div className="team-edit-container">
 							<h3>{ value1 }</h3>
-							<button className="btn edit-btn" onClick={ this.clicked1 }>edit</button>
+							<button className="btn edit-btn" onClick={(e) => clicked1(e) }>edit</button>
 						</div>	
 						} 
 
@@ -151,7 +126,7 @@ class Skill extends Component {
 
 					</div>
 
-					{ reserve.id ?
+					{ reserve?.id ?
 					<div className="team-card reserve">
 						<h4 className="team-title">Reserve</h4>
 						 <Player displaySkill={ displaySkill } id={ reserve.id } names={ reserve }/> 
@@ -165,8 +140,8 @@ class Skill extends Component {
 							? 
 							names.length 
 							? 
-								<form onSubmit={this.handleSubmit2} className="team-input1">
-									<input className="name-input team-input" placeholder="Enter Team Name" type="text" value={ value2 } id="team2" onChange={this.handleChange2} />
+								<form onSubmit={(e) => handleSubmit2(e)} className="team-input1">
+									<input className="name-input team-input" placeholder="Enter Team Name" type="text" value={ value2 } id="team2" onChange={(e) => handleChange2(e)} />
 									<input className="submit-btn btn team-btn" type="submit"/>
 								</form>
 							:
@@ -175,7 +150,7 @@ class Skill extends Component {
 						:
 							<div className="team-edit-container">
 								<h3>{value2}</h3>
-								<button className="btn edit-btn" onClick={ this.clicked2 }>edit</button> 
+								<button className="btn edit-btn" onClick={(e) => clicked2(e) }>edit</button> 
 							</div>
 						} 
 
@@ -188,8 +163,6 @@ class Skill extends Component {
 			</React.Fragment>
 
 		);
-
-	}
 }
 
 export default Skill;

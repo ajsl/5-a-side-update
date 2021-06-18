@@ -39,8 +39,6 @@ class Team extends Component {
 
 	
 	render() {
-console.log(this.state.names)
-		//console.log(this.state.names)
 		//set up empty arrays 
 		let names1 = [];
 		let names2 = [];
@@ -62,11 +60,6 @@ console.log(this.state.names)
 		}else if(names2.length > names1.length) {
 			reserve = names2.pop();
 		}
-
-		console.log(names1)
-		console.log(names2)
-
-		
 
 		return (
 

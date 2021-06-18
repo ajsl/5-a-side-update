@@ -9,12 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 const List: React.FC = () => {
 
   const players: any = useSelector(state => {
-    console.log(state);
 
     return state;
   })
 
-  console.log(players.names)
 
   const [value, setValue] = useState("");
   const [skill, setSkill] = useState("1");

@@ -18,12 +18,15 @@ const initialState = {
 
 }
 
+let incrementalId = 3;
+
 export const playerSlice = createSlice({
   name: "players",
   initialState,
   reducers: {
     setName: (state, action: PayloadAction<IPlayer>) => {
-     
+      action.payload.id = incrementalId;
+      incrementalId ++;
       return {...state, names: state.names.concat(action.payload)}
       // state.names = state.names.concat(action.payload);
       
