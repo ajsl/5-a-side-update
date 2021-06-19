@@ -1,4 +1,4 @@
-import { IPlayer, IPlayerArray } from "../Models/player";
+import { IPlayer } from "../Models/player";
 
 export const validate = (value: any) => {
 	if (value.length < 1 || value.length > 30 || value === " " ){

@@ -5,6 +5,7 @@ import info from "../assets/images/info.png";
 import { validate, repeat } from "../Data/dataFunctions";
 import { playerSlice } from "../Data/createSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { IPlayer } from "../Models/player";
 
 const List: React.FC = () => {
 
@@ -12,7 +13,6 @@ const List: React.FC = () => {
 
     return state;
   })
-
 
   const [value, setValue] = useState("");
   const [skill, setSkill] = useState("1");
@@ -155,14 +155,14 @@ const List: React.FC = () => {
             />
           </div>
           <div className="info-btn-container">
-            <a onClick={hiddenClick} className="info-btn">
+            <button onClick={hiddenClick} className="info-btn">
               <img className="info-img" alt="infomation icon" src={info} />
-            </a>
+            </button>
           </div>
         </form>
       </section>
       <section className="sort-btn">
-        {players.names.length != undefined && players.names.length > 3 ? (
+        {players.names.length !== undefined && players.names.length > 3 ? (
           <Link to="/skill">
             <button
               className="btn sort"
@@ -207,13 +207,11 @@ const List: React.FC = () => {
           names passed through props.*/}
 
       <section className="player-list">
-        {players.names.map((names: { id: string | number | null | undefined; }) => (
+        {players.names.map((names: IPlayer) => (
           <div key={names.id}>
             <Player
-              id={names.id}
               names={names}
-              onClick={onclick}
-              btn={true}
+  
             />
           </div>
         ))}

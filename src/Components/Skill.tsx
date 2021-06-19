@@ -1,9 +1,8 @@
 import React, { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
 import Player from "./Player";
 import { Link } from "react-router-dom";
-import { shuffle } from "../Data/dataFunctions";
 import { useSelector } from "react-redux";
-import { IPlayer, IPlayerArray } from "../Models/player";
+import { IPlayer } from "../Models/player";
 
 const Skill: React.FC = () => {
 	
@@ -19,14 +18,6 @@ const Skill: React.FC = () => {
 	const [displaySkill, setDisplaySkill] = useState(false);
 	const namesArray = props.names.slice();
 	const names: IPlayer[] = namesArray.sort((a: IPlayer, b: IPlayer) => a.skill - b.skill);
-	  
-		// this.handleChange1 = this.handleChange1.bind(this);
-		// this.handleChange2 = this.handleChange2.bind(this);
-		// this.handleSubmit1 = this.handleSubmit1.bind(this);
-		// this.handleSubmit2 = this.handleSubmit2.bind(this);
-		// this.clicked2 = this.clicked2.bind(this);
-		// this.clicked1 = this.clicked1.bind(this);
-		// this.skillClicked = this.skillClicked.bind(this);
 
 	// team name onchange handlers 
 
@@ -122,14 +113,14 @@ const Skill: React.FC = () => {
 						</div>	
 						} 
 
-						{ names1.map((name, i ) => <div key={ name.id }  ><Player displaySkill={ displaySkill } id={ name.id } names={ name } /></div>)}
+						{ names1.map((name ) => <div key={ name.id }  ><Player displaySkill={ displaySkill } names={ name } /></div>)}
 
 					</div>
 
 					{ reserve?.id ?
 					<div className="team-card reserve">
 						<h4 className="team-title">Reserve</h4>
-						 <Player displaySkill={ displaySkill } id={ reserve.id } names={ reserve }/> 
+						 <Player displaySkill={ displaySkill } names={ reserve }/> 
 					</div>
 					: <div></div>}
 
@@ -154,7 +145,7 @@ const Skill: React.FC = () => {
 							</div>
 						} 
 
-						{ names2.map((name, i) => <div key={ name.id } ><Player displaySkill={ displaySkill } id={ name.id } names={ name } 
+						{ names2.map((name) => <div key={ name.id } ><Player displaySkill={ displaySkill } names={ name } 
 							/></div>)}
 						
 

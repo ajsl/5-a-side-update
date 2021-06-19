@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { stat } from "fs";
-import { IPlayer, IPlayerArray } from "../Models/player";
+import { IPlayer } from "../Models/player";
 import { RootState } from "./store";
 
 const initialState = {
@@ -28,29 +27,16 @@ export const playerSlice = createSlice({
       action.payload.id = incrementalId;
       incrementalId ++;
       return {...state, names: state.names.concat(action.payload)}
-      // state.names = state.names.concat(action.payload);
       
-    }
-    // setName: {
-    //   reducer: (state, action: PayloadAction<IPlayer>) => {
-    //     state.push(action.payload);
-    //   },
-    //   prepare: (name: string, id: number, skill: number) => {
-    //     return { payload: { name, id, skill } };
-    //   },
-    // },
-    // removePlayer: {
-    //   reducer: (state, action: PayloadAction<IPlayer>) => {
-    //     state.filter((x) => x !== action.payload);
-    //   },
-    //   prepare: (name: string, id: number, skill: number) => {
-    //     return { payload: { name, id, skill } };
-    //   },
-    // },
+    },
+    removePlayer: (state, action: PayloadAction<IPlayer>) => {
+
+        return {...state, names: state.names.filter(x => x.id !== action.payload.id) }
+        }, 
   },
 });
 
-export const { setName } = playerSlice.actions;
+export const { setName, removePlayer } = playerSlice.actions;
 
 export const players = (state: RootState) => state;
 
