@@ -1,21 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IPlayer } from "../Models/player";
+import { IPlayer, IPlayerArray } from "../Models/player";
 import { RootState } from "./store";
 
-const initialState = {
- names: [
-  {
-    name: "James",
-    id: 1,
-    skill: 1
-  },
-  {
-    name: "Em",
-    id: 2,
-    skill: 3
-  }]
+// const initialState = {
+//  names: [
+//   {
+//     name: "James",
+//     id: 1,
+//     skill: 1
+//   },
+//   {
+//     name: "Em",
+//     id: 2,
+//     skill: 3
+//   }]
 
-}
+// }
+const initialState = {  
+  names: []
+} as IPlayerArray
 
 let incrementalId = 3;
 

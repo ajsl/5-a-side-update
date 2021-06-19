@@ -20,6 +20,7 @@ h1 {
 		font-size: 80px;
 		background: linear-gradient(#1252C8, #1354CD);
 		-webkit-background-clip: text;
+		background-clip: text;
 		-webkit-text-fill-color: transparent;
 	}
 }
@@ -27,7 +28,7 @@ h3 {
 	font-size: 26px;
 }
 
-btn {
+.btn {
 	color: #fff;
 }
 

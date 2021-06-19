@@ -1,3 +1,10 @@
+button {
+	cursor: pointer;
+}
+.btn {
+	cursor: pointer;
+}
+
 .sort-btn {
 	display: flex;
 	justify-content: center;
@@ -14,9 +21,9 @@
 
 .btn:hover {
 	border: 2px solid black;
-	padding: 4px;
+	padding: 5px;
 	background: $button-color-hover;
-	transition-duration:: 0.2s;
+	transition-duration: 0.2s;
 }
 
 button {
@@ -28,7 +35,6 @@ button {
 }
 
 .btn-delete {
-	height: 2px;
 	width: 2px;
 	color: black;
 	text-align: center;
@@ -39,7 +45,8 @@ button {
 		justify-content: center;
 		p {
 			position: relative;
-			bottom: 2px;
+			bottom: 5px;
+			font-size: larger;
 		}
 	}
 
@@ -55,10 +62,11 @@ button {
 
 .sort:hover {
 	border: 2px solid black;
-	padding: 9px 49px;
+	padding: 10px 49px;
 	background: $button-color-hover;
-	transition-duration:: 0.2s;
+	transition-duration: 0.2s;
 }
+
 .sort-btn {
 	height: 50px;
 }
@@ -97,8 +105,7 @@ button {
 .info-btn {
 	margin-right: 22%;
 	margin-bottom: 2%;
-	heigth: 15px;
-	width: 15px;
+	border: none;
 	display: flex;
 	position: relative;
 	border-radius: 15px;

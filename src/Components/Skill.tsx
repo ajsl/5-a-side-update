@@ -3,11 +3,11 @@ import Player from "./Player";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IPlayer } from "../Models/player";
+import { shuffle } from "../Data/dataFunctions";
 
 const Skill: React.FC = () => {
 	
 	const props: any = useSelector(state => {
-	
 		return state;
 	  })
 
@@ -54,19 +54,19 @@ const Skill: React.FC = () => {
 	const skillClicked = () => {
 		setDisplaySkill(!displaySkill)
 	}
-	
-		// const { displayTeam1, displayTeam2, names, value1, value2, displaySkill } = state;
-		const names1 = names.filter(name => name.id % 2 === 0)
-		const names2 = names.filter(name => name.id % 2 !== 0)
+		//shuffel the players
+		const shuffelPlayers = shuffle(names);
+
+		const names1 = shuffelPlayers.slice(0, (Math.ceil((shuffelPlayers.length - 1) / 2)))
+		const names2 = shuffelPlayers.slice((Math.ceil((shuffelPlayers.length - 1) / 2) ))
 
 		let reserve: IPlayer | undefined;
-		
+
 		if (names1.length > names2.length ) {
 			reserve = names1.pop();
 		}else if(names2.length > names1.length) {
 			reserve = names2.pop();
 		}
-		
 		return (
 			
 			<React.Fragment>

@@ -11,7 +11,7 @@ const List: React.FC = () => {
 
   const players: any = useSelector(state => {
 
-    return state;
+    return state ? state : [{}];
   })
 
   const [value, setValue] = useState("");
@@ -162,7 +162,7 @@ const List: React.FC = () => {
         </form>
       </section>
       <section className="sort-btn">
-        {players.names.length !== undefined && players.names.length > 3 ? (
+        {players.names !== undefined && players.names.length > 3 ? (
           <Link to="/skill">
             <button
               className="btn sort"
@@ -207,7 +207,7 @@ const List: React.FC = () => {
           names passed through props.*/}
 
       <section className="player-list">
-        {players.names.map((names: IPlayer) => (
+        {players.names?.map((names: IPlayer) => (
           <div key={names.id}>
             <Player
               names={names}
